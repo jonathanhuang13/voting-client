@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route } from 'react-router';
+import App from './components/app';
 import Voting from './components/voting';
 
 const pair = [ 'V for Vendetta', 'Batman' ];
+const routes = <Route component={App}>
+  <Route path='/' component={Voting} />
+</Route>
 
 ReactDOM.render(
-  <Voting pair={pair} hasVoted='V for Vendetta' winner='V for Vendetta' />,
+  <Router history={ hashHistory }>{routes}</Router>,
   document.getElementById('app')
 );
