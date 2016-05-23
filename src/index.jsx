@@ -5,8 +5,6 @@ import App from './components/app';
 import Voting from './components/voting';
 import Results from './components/results';
 
-const pair = [ 'V for Vendetta', 'Batman' ];
-
 ReactDOM.render(
   <Router history={ hashHistory }>
     <Route component={App}>

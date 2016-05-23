@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import Winner from './winner';
 
 export default React.createClass({
   mixins: [ PureRenderMixin ],
@@ -10,7 +11,7 @@ export default React.createClass({
 
   getVotes: function(entry) {
     if(!this.props.tally)
-      return 0
+      return 0;
 
     const tally = this.props.tally.get(entry);
 
@@ -20,6 +21,23 @@ export default React.createClass({
       return 0;
   },
   
+  renderWinner: function() {
+    return <Winner ref='winner' winner={this.props.winner} />;
+  },
+
+  renderTallies: function() {
+    return (
+      <div className='results'>
+        <div className='tally'>
+          {this.renderPairs()}
+        </div>
+        <div className='next'>
+          <button ref='next' className='next' onClick={this.props.next}>Next</button>
+        </div>
+      </div>
+    );
+  },
+
   renderPairs: function() {
     return this.getPair().map(this.renderPair);
   },
@@ -36,10 +54,9 @@ export default React.createClass({
   },
 
   render: function() {
-    return (
-      <div className='results'>
-        {this.renderPairs()}
-      </div>
-    );
+    if(this.props.winner)
+      return this.renderWinner();
+    else
+      return this.renderTallies();
   }
 });
