@@ -17,8 +17,7 @@ export default React.createClass({
   },
 
   handleClick: function(entry) {
-    console.log(entry)
-    //this.props.vote(entry);
+    this.props.vote(entry);
   },
 
   hasVotedFor: function(entry) {
