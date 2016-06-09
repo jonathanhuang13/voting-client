@@ -3,5 +3,11 @@ export function setState(state) {
 }
 
 export function vote(entry) {
-  return { type: 'VOTE', entry };
+  const meta = { remote: true };
+  return { type: 'VOTE', meta, entry };
+}
+
+export function next() {
+  const meta = { remote: true}
+  return { type: 'NEXT', meta };
 }
